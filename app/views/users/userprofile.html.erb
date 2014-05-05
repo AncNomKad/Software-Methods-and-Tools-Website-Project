@@ -1,0 +1,16 @@
+<% if !user_signed_in? %>
+<li><%= link_to "Sign in", '/sign_in' %></li>	
+
+<% else %>
+<% provide(:title, current_user.email) %>
+<h1>Your profile:</h1>
+      <%= gravatar_for @user, size: 200 %><br>
+<div>
+      Email: <%= @user.email %><br>
+      Name: <%= @user.name%><br>
+</div>
+
+      <%= button_to "Edit your profile", '/users/edit', :method => :get %>
+    </li>
+<% end %>
+

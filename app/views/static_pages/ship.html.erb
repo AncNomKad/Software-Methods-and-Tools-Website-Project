@@ -1,0 +1,50 @@
+
+<h1> Details about <%=@ship.ship_label %> </h1>
+
+</p>
+  <b>Image:</b>
+ <%= image_tag(@ship.image) %>
+ </p>
+
+<p>
+  <b>Class:</b>
+  <%= @ship.ship_class %>
+</p>
+
+</p>
+  <b>Manufacturer:</b>
+  <%= @ship.manufacturer %>
+ </p>
+
+ </p>
+  <b>Hitpoints:</b>
+  <%= @ship.hitpoints %>
+ </p>
+
+ </p>
+  <b>Shields:</b>
+  <%= @ship.shields %>
+ </p>
+
+ </p>
+  <b>Description:</b>
+ <%= @ship.description %>
+ </p>
+
+<table id="ship">
+  <tr>
+    <th>Name</th>
+    <th></th>
+</tr>
+
+</tbody>
+<% @ships.each do |ship1| %>
+	<tr>
+		<td><%= ship1.ship_label %></td>
+        <td><%= link_to "Compare to #{ship1.ship_label}", compare_path(ship1) %></td>
+
+	</tr>
+<% end %>
+</table>
+
+<%= link_to 'Back to Showroom Database', showroom_path %>

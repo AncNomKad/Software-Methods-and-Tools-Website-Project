@@ -1,0 +1,38 @@
+
+<h1>Showroom Database</h1>
+<%= form_tag showroom_path, :method => :get do %>
+  Include: 
+  <% @all_ship_classes.keys.each do |ship_class| %>
+    <%= ship_class %>
+    <%= check_box_tag "ship_classes[#{ship_class}]", 1, session[:ship_classes].keys.include?(ship_class) %>
+  <% end %>
+  <%= submit_tag 'Refresh' %>
+<% end %>
+
+<table>
+  <tr>
+    <th><%= link_to "Name", showroom_path(:sort =>"ship_label")%></th>
+    <th><%= link_to "Class", showroom_path(:sort =>"ship_class")%></th>
+    <th><%= link_to "Manufacturer", showroom_path(:sort =>"manufacturer")%></th>
+    <th><%= link_to "Hitpoints", showroom_path(:sort =>"hitpoints")%></th>
+    <th><%= link_to "Shields", showroom_path(:sort =>"shields")%></th>
+    <th>More Info</th>
+  </tr>
+
+</tbody>
+<% @ships.each do |ship| %>
+	<tr>
+		<td><%= ship.ship_label %></td>
+		<td><%= ship.ship_class %></td>
+		<td><%= ship.manufacturer %></td>
+        <td><%= ship.hitpoints %></td>
+        <td><%= ship.shields %></td>
+        <td><%= link_to "More about #{ship.ship_label}", ship_path(ship) %></td>
+
+	</tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back', root_path %>

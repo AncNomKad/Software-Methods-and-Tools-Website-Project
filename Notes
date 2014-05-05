@@ -1,0 +1,73 @@
+home.html.erb
+	Need to links Database ???
+
+Classes
+	For Button class:"btn btn-large btn-primary"
+
+Remember Microposts - Help for User Profile to add content
+http://ruby.railstutorial.org/chapters/a-demo-app#top
+
+_form.html.erb
+This <%= f.text_field :password %> does not work	X
+
+Css
+How do you get the picture to fill the whole background?	X
+
+Base all tests off of web_steps.rb
+
+http://hard-light.net/wiki/images/RScreen0124.jpg
+http://hard-light.net/wiki/images/RScreen0089.png
+http://hard-light.net/wiki/images/RScreen0059.jpg
+
+<%= form_tag ship_path, :method => :get, :id => 'ship_class' do %>
+  <%= hidden_field_tag "ship_label_sort", true if @ship_label_header %>
+  <%= hidden_field_tag ":manufacturer", true if @manufacturer_header %>
+  Include: 
+  <% @all_ship_class.each do |ship_class| %>
+    <%= ship_class %>
+    <%= check_box_tag "ship_class[#{ship_class}]", 1, @selected_ship_class.include?(ship_class), :id => "ship_class_#{ship_class}" %>
+  <% end %>
+  <%= submit_tag 'Refresh', :id => 'ship_class_submit' %>
+<% end %>
+
+= form_tag movies_path, :method => :get, :id => 'ratings_form' do
+  = hidden_field_tag "title_sort", true if @title_header
+  = hidden_field_tag ":release_date_sort", true if @date_header
+  Include: 
+  - @all_ratings.each do |rating|
+    = rating
+    = check_box_tag "ratings[#{rating}]", 1, @selected_ratings.include?(rating), :id => "ratings_#{rating}"
+  = submit_tag 'Refresh', :id => 'ratings_submit'
+
+  include ActiveModel::Validations
+  attr_accessible :email, :name, :password
+
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <div>
+      Email: <%= @user.email %><br>
+      Name: <%= @user.name%><br>
+</div>
+
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  <h2>
+  <%= @user.email %>
+  </h2>    
+  </aside>
+</div>
+<%= button_to "Edit your profile", edit_user_path(@user) %>
+<%= button_to 'Back', root_path %>
